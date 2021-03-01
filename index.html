@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ジャンプ作家風&nbsp;巻末コメントアプリ</title>
+    <style>
+      .row { margin-top: 4px; }
+    </style>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <link rel="stylesheet" href="lib/colorPicker/css/colorPicker.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+  </head>
+  <body>
+    <div id="app">
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">ジャンプ作家風&nbsp;巻末コメントアプリ</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="#about" data-toggle="modal" data-target="#modal1">about</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div style="margin-top:70px;"></div>
+      <div class="container theme-showcase" role="main">
+        <div class="row"> 
+          <div class="col-md-6"> 
+            <canvas id="diary" width="384" height="784"></canvas>
+          </div>
+          <div class="col-md-6"> 
+            <div style="margin-top: 8px;">
+              <div class="input-group">
+                <span class="input-group-addon">著者近影</span>
+                <input type="text" class="form-control" v-model="author_img_url">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" v-on:click="download_img">取得</button>
+                </span>
+              </div>
+            </div>
+            <div style="margin-top: 8px;">
+              <div class="input-group">
+                <span class="input-group-addon">著者名</span>
+                <input type="text" class="form-control" v-model="name" v-on:input="update">
+              </div>
+            </div>
+            <div style="margin-top: 8px;">
+              <textarea rows="10" class="form-control" v-model="text" v-on:input="update"></textarea>
+            </div>
+          </div>
+          <div class="col-md-6" style="margin-top: 8px;">
+            <button class="btn btn-primary" style="width: 100%;" v-on:click="download_image">画像をダウンロード</button>
+          </div>
+          <div class="col-md-6" style="margin-top: 30px; margin-bottom: -10px;"> 
+            <div role="alert" class="alert alert-info alert-dismissible fade in">
+              <span aria-hidden="true" class="glyphicon glyphicon-info-sign"></span>
+              スライダーを動かすことで著者近影(画像)や著者名、本文の位置を調整できます。
+            </div>
+          </div>
+          <div class="col-md-6">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation"><a href="#route_01" aria-controls="r_01" role="tab" data-toggle="tab">著者近影</a></li>
+              <li role="presentation" class="active"><a href="#route_02" aria-controls="r_02" role="tab" data-toggle="tab">著者名</a></li>
+              <li role="presentation"><a href="#route_03" aria-controls="r_03" role="tab" data-toggle="tab">本文</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane" id="route_01">
+                x:{{author_img_pos.x}}<input type="range" min="0" v-bind:max="author_img_pos.wmax" v-model="author_img_pos.x" v-on:change="update()"><br>
+                y:{{author_img_pos.y}}<input type="range" min="0" v-bind:max="author_img_pos.hmax" v-model="author_img_pos.y" v-on:change="update()"><br>
+              </div>
+              <div role="tabpanel" class="tab-pane active" id="route_02">
+                x:{{name_pos.x}}<input type="range" min="0" max="350" v-model="name_pos.x" v-on:change="update()"><br>
+                <!--
+                y:{{name_pos.y}}<input type="range" min="0" max="700" v-model="name_pos.y" v-on:change="update()"><br>
+                文字サイズ:{{name_pos.size}}<input type="range" min="0" max="128" v-model="name_pos.size" v-on:change="update()"><br>
+                -->
+              </div>
+              <div role="tabpanel" class="tab-pane" id="route_03">
+                x:{{text_pos.x}}<input type="range" min="0" max="350" v-model="text_pos.x" v-on:change="update()"><br>
+                <!--
+                y:{{text_pos.y}}<input type="range" min="0" max="700" v-model="text_pos.y" v-on:change="update()"><br>
+                文字サイズ:{{text_pos.size}}<input type="range" min="0" max="128" v-model="text_pos.size" v-on:change="update()"><br>
+                文字間:{{text_pos.gap}}<input type="range" min="0" max="600" v-model="text_pos.gap" v-on:change="update()"><br>
+                -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <canvas id="text_canvas" width="600" height="600" style="visibility:hidden; display:none;"></cavnas>
+        <canvas id="img_canvas" width="600" height="600" style="visibility:hidden; display:none;"></cavnas>
+      </div>
+      <!-- modal dislogs -->
+      <div id="modal1" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">ジャンプ作家風&nbsp;巻末コメントアプリについて</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+              雨穴(<a href="https://twitter.com/uketsuHAKONIWA/status/1366015291201703945">@uketsuHAKONIWA</a>)さんが作成された、ジャンプ作家風の単行本巻末コメントフォーマットをWebブラウザから扱えるようにしたアプリです。<br>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- <div id="app"> -->
+    <script src="app.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </body>
+</html>
+
