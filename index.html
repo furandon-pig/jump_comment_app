@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="lib/colorPicker/css/colorPicker.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
     <div id="app">
@@ -35,11 +35,16 @@
       </nav>
       <div style="margin-top:70px;"></div>
       <div class="container theme-showcase" role="main">
-        <div class="row"> 
-          <div class="col-md-6"> 
+        <div class="row">
+          <div class="col-md-6">
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="ジャンプ作家風 巻末コメントアプリ" data-url="https://furandon-pig.github.io/jump_comment_app/" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
             <canvas id="diary" width="384" height="784"></canvas>
           </div>
-          <div class="col-md-6"> 
+          <div class="col-md-6">
             <div style="margin-top: 8px;">
               <div class="input-group">
                 <span class="input-group-addon">著者近影</span>
@@ -64,7 +69,7 @@
             <button class="btn btn-primary" style="width: 100%;" v-on:click="download_image">画像をダウンロード</button>
           </div>
           -->
-          <div class="col-md-6" style="margin-top: 30px; margin-bottom: -10px;"> 
+          <div class="col-md-6" style="margin-top: 30px; margin-bottom: -10px;">
             <div role="alert" class="alert alert-info alert-dismissible fade in">
               <span aria-hidden="true" class="glyphicon glyphicon-info-sign"></span>
               スライダーを動かすことで著者近影(画像)や著者名、本文の位置を調整できます。
