@@ -18,28 +18,28 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="app">
-      <!-- Fixed navbar -->
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">ジャンプ作家風&nbsp;巻末コメントアプリ</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="#about" data-toggle="modal" data-target="#modal1">about</a></li>
-            </ul>
-          </div>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">ジャンプ作家風&nbsp;巻末コメントアプリ</a>
         </div>
-      </nav>
-      <div style="margin-top:70px;"></div>
-      <div class="container theme-showcase" role="main">
-        <div class="row">
-          <div class="col-md-6">
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="ジャンプ作家風 巻末コメントアプリ" data-url="https://furandon-pig.github.io/jump_comment_app/" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#about" data-toggle="modal" data-target="#modal1">about</a></li>
+          </ul>
         </div>
-        <div class="row">
+      </div>
+    </nav>
+    <div style="margin-top:70px;"></div>
+    <div class="container theme-showcase" role="main">
+      <div class="row">
+        <div class="col-md-6">
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="ジャンプ作家風 巻末コメントアプリ" data-url="https://furandon-pig.github.io/jump_comment_app/" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+      <div id="app">
+        <div class="row" id="app">
           <div class="col-md-6">
             <canvas id="diary" width="384" height="784"></canvas>
           </div>
@@ -105,31 +105,31 @@
         </div>
         <canvas id="text_canvas" width="600" height="600" style="visibility:hidden; display:none;"></cavnas>
         <canvas id="img_canvas" width="600" height="600" style="visibility:hidden; display:none;"></cavnas>
-      </div>
-      <!-- modal dislogs -->
-      <div id="modal1" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">ジャンプ作家風&nbsp;巻末コメントアプリについて</h4>
-            </div>
-            <div class="modal-body">
-              <p>
-              雨穴(<a href="https://twitter.com/uketsuHAKONIWA/status/1366015291201703945">@uketsuHAKONIWA</a>)さんが作成された、ジャンプ作家風の単行本巻末コメントフォーマットをWebブラウザから扱えるようにしたアプリです。<br>
-              </p>
-              <p>
-              現時点では画像のダウンロードができないため、スクリーンショット等で画像を保存してもらえればと思います。
-              Repository:&nbsp;<a href="https://github.com/furandon-pig/jump_comment_app">furandon-pig/jump_comment_app</a>
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        <!-- modal dislogs -->
+        <div id="modal1" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">ジャンプ作家風&nbsp;巻末コメントアプリについて</h4>
+              </div>
+              <div class="modal-body">
+                <p>
+                雨穴(<a href="https://twitter.com/uketsuHAKONIWA/status/1366015291201703945">@uketsuHAKONIWA</a>)さんが作成された、ジャンプ作家風の単行本巻末コメントフォーマットをWebブラウザから扱えるようにしたアプリです。<br>
+                </p>
+                <p>
+                現時点では画像のダウンロードができないため、スクリーンショット等で画像を保存してもらえればと思います。
+                Repository:&nbsp;<a href="https://github.com/furandon-pig/jump_comment_app">furandon-pig/jump_comment_app</a>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div> <!-- <div id="app"> -->
+      </div> <!-- <div id="app"> -->
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
