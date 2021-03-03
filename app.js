@@ -67,7 +67,6 @@ var vm = new Vue({
     this.text_pos.gap = 3;
 
     this.download_img();
-    this.update();
   },
   methods: {
     update: function() {
