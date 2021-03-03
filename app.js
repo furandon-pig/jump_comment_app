@@ -96,7 +96,9 @@ var vm = new Vue({
         // update_img()の値を参照。
         vm.author_img_pos.wmax = vm.author_img.width - 262;
         vm.author_img_pos.hmax = vm.author_img.height - 261;
-        vm.update();
+        setTimeout(function() {
+          vm.update();
+        }, 500);
       };
     },
     update_img: function() {
